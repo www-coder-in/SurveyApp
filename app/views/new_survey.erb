@@ -1,24 +1,21 @@
 <div class="container">
 
-  <h2>BANANAS! You wanna make a new survey!</h2>
+  <h3>BANANAS! You wanna make a new survey!</h3>
 
-  <h3>Come make a new survey!</h3>
+  <h4>Start by giving us a survey name!</h4>
 
-  <% if @error %>
-    <div class="error"><%= @error %></div>
-  <% end %>
+    <% @error_messages.each do |error| %>
+      <div class="error"> <%= error %> </div>
+    <% end %>
 
-  <form id="register" method="post" action="/register">
-    <label class="label" for="username">Username</label>
-    <input type="username" name="input[username]" placeholder="Zoboomafoo"><br>
+  <form id="new_survey" method="post" action="/users/<%= @user.id %>/surveys">
+    <label class="label" for="survey_name">Survey Name</label>
+    <input type="text" name="title" placeholder="Favorite Banana"><br>
 
-    <label class="label" for="password">Password</label>
-    <input type="password" name="input[password]" placeholder="6 or more characters">
-
-    <div class="submit"><input class="button-primary" type="submit" value="Sign Up"></div>
+    <div class="submit"><input class="button-primary" type="submit" value="Create Survey"></div>
   </form>
 
-  <a href='/surveys'><i>&#8617;  Back To All Surveys</i></a>
+  <!-- <a href='/surveys'><i>&#8617;  Back To All Surveys</i></a> -->
 
 </div>
 

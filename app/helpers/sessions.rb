@@ -20,7 +20,7 @@ def route_based_on_any_errors(action)
       login
       redirect "/users/#{@user.id}/surveys"
     else
-                    p '-'*50
+      p '-'*50
       puts "in route false"
       @error_messages = @user.errors.full_messages
       erb :"#{action}"

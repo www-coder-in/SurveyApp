@@ -5,8 +5,12 @@ end
 
 # Form for user registration
 get '/register' do
-  @error_messages = []
-  erb :register
+  if current_user
+    redirect "/users/#{current_user.id}/surveys"
+  else
+    @error_messages = []
+    erb :register
+  end
 end
 
 # User registers and sees all their surveys (none)
@@ -25,12 +29,12 @@ end
 # Reroutes to user based on if they're logged in
 get '/users/surveys' do
   if current_user
-    p '-'*50
-    puts "true for current_user"
+    # p '-'*50
+    # puts "true for current_user"
     redirect "/users/#{current_user.id}/surveys"
   else
-    p '-'*50
-    puts "false for current_user"
+    # p '-'*50
+    # puts "false for current_user"
     redirect '/login'
   end
 end
@@ -48,39 +52,78 @@ get '/logout' do
   erb :index
 end
 
-get '/users/:user_id/surveys/:survey_id' do
+# Form for certain user to create a new survey
+get '/users/:id/surveys/new' do
+  @error_messages = []
+  @user = current_user
+    p '-'*50
+    puts "in new survey"
+  erb :new_survey
+end
 
+get '/users/:user_id/surveys/:survey_id' do
+  @survey = Survey.find(params[:survey_id])
+  @user = current_user
   erb :survey
 end
 
 # All surveys of a certain user
 get '/users/:id/surveys' do
   if current_user
+    puts "in survey current user"
+    p '-'*50
     @user = current_user
-    @surveys = Survey.where(author_id: params[:id])
+    if Survey.where(author_id: params[:id])
+          puts "didnt find survey"
+
+      @surveys = []
+    else
+                puts "found survey"
+
+      @surveys = Survey.where(author_id: params[:id])
+    end
     erb :surveys
   else
+    @error_messages=[]
+    puts "in login"
     erb :login
   end
 end
 
 # Reroutes user to new survey form based on if they're logged in
-get 'users/surveys/new' do
+get '/users/surveys/new' do
   if current_user
-    erb :new_survey
+    p '-'*50
+    puts "true for current_user"
+    redirect "/users/#{current_user.id}/surveys/new"
   else
+    p '-'*50
+    puts "false for current_user"
     erb :login
   end
 end
 
-# Form for certain user to create a new survey
-get '/users/:id/surveys/new' do
-
-  erb :new_survey
-end
-
 # User creates a new survey and sees new survey
 post '/users/:id/surveys' do
-  survey = Survey.create(params[:input])
+  survey = Survey.create(title: params[:title], author_id: current_user.id)
   redirect "/users/#{current_user.id}/surveys/#{survey.id}"
+end
+
+# Reroutes user to new survey form based on if they're logged in
+post '/users/:user_id/surveys/:survey_id/questions/' do
+  if current_user
+    p '-'*50
+    puts "true for current_user"
+    redirect "/users/#{current_user.id}/surveys/new"
+  else
+    p '-'*50
+    puts "false for current_user"
+    erb :login
+  end
+end
+
+post '/users/:user_id/surveys/:survey_id/questions/new' do
+question = Question.create(params[:input])
+response = Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: nil)
+@questions = Question.where(Question.surveysparams[:survey_id]
 end

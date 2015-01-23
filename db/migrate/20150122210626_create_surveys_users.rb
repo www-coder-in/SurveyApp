@@ -1,6 +1,6 @@
-class CreateSurveysusers < ActiveRecord::Migration
+class CreateSurveysUsers < ActiveRecord::Migration
   def change
-      create_table :survey_user do |t|
+      create_table :survey_users do |t|
       t.integer :survey_id
       t.integer :user_id
 
