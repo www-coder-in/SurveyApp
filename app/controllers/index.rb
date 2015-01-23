@@ -64,6 +64,8 @@ end
 get '/users/:user_id/surveys/:survey_id' do
   @survey = Survey.find(params[:survey_id])
   @user = current_user
+
+  @questions = @survey.questions
   erb :survey
 end
 
@@ -125,5 +127,10 @@ end
 post '/users/:user_id/surveys/:survey_id/questions/new' do
 question = Question.create(params[:input])
 response = Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: nil)
-@questions = Question.where(Question.surveysparams[:survey_id]
+@questions = Question.surveys.where(id: params[:survey_id])
+
+  @survey = Survey.find(params[:survey_id])
+  @user = current_user
+
+  @questions = @survey.questions
 end
