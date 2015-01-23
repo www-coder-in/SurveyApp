@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 	attr_accessor :password
 	before_save :password
 	validates :username, uniqueness: true
-	
+
 
 	def password
 		@password ||= Password.new(password_hash)
