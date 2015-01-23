@@ -76,13 +76,11 @@ get '/users/:id/surveys' do
     p '-'*50
     @user = current_user
     if Survey.where(author_id: params[:id])
-          puts "didnt find survey"
-
-      @surveys = []
-    else
-                puts "found survey"
-
+      puts "didnt find survey"
       @surveys = Survey.where(author_id: params[:id])
+    else
+      @surveys = []
+      puts "found survey"
     end
     erb :surveys
   else
