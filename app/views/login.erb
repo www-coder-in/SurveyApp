@@ -1,0 +1,32 @@
+<div class='container'>
+
+  <h2>BANANAS! You're returning!</h2>
+
+  <h3>Come on in and sign in!</h3>
+
+  <% if @error %>
+    <div class="error"><%= @error %></div>
+  <% end %>
+
+  <form id="login" method="post" action="/users/<%= @user.id %>/surveys">
+    <label class="label" for="name">Name</label>
+    <input type="text" name="input[username]" placeholder="Zobamafoo" >
+    <br>
+
+<!--     <label class="label" for="email">Email</label>
+    <input type="email" name="user[email]" placeholder="e.g., me@example.com" >
+    <br> -->
+
+    <label class="label" for="password">Password</label>
+    <input type="password" name="input[password]" placeholder="6 or more characters">
+    <br>
+
+    <div class="submit"><input class="button-primary" type="submit" value="Sign In"></div>
+
+  </form>
+
+  <a href='/surveys'><i>&#8617;  Back To All Surveys</i></a>
+
+
+
+</div>
