@@ -418,3 +418,11 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+/* Extra
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#large_lemur {
+  height: 500px;
+  width: auto;
+}
