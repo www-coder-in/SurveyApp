@@ -126,11 +126,13 @@ end
 
 post '/users/:user_id/surveys/:survey_id/questions/new' do
 question = Question.create(params[:input])
-response = Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: nil)
-@questions = Question.surveys.where(id: params[:survey_id])
+Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: 0)
 
   @survey = Survey.find(params[:survey_id])
   @user = current_user
-
   @questions = @survey.questions
+  puts '-'*50
+  puts @survey
+
+  redirect "/users/#{current_user.id}/surveys/#{@survey.id}"
 end

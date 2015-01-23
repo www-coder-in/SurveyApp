@@ -4,7 +4,7 @@
 <h4> Check out your survey!</h4>
 <h5> <%= @survey.title %> </h5>
 
-<form id="ask_question" method="post" action="/users/<%= @user.id %>surveys/<% @survey.id %>"/questions/new">
+<form id="ask_question" method="post" action="/users/<%= @user.id %>/surveys/<%= @survey.id %>/questions/new">
  <input type="textbox" class="question" name="input[subject]" placeholder="Enter Question here">
  <input class="button-primary" type="submit" value="Add question">
 </form>
@@ -13,8 +13,6 @@
   <% @questions.each do |question| %>
     <li>
       <%= question.subject %>
-      # <%= question.subject %>
-
     </li>
   <% end %>
 </ol>
