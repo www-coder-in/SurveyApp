@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <!-- 
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <link rel="stylesheet" href="/css/normalize.css">
-  <!--
-    application.css is where you put your styles
-  -->
-  <link rel="stylesheet" href="/css/application.css">
 
+<html>
+<head>
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/application.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
-
-  <title></title>
+  <title>Welcome Survey Lemur</title>
 </head>
+
 <body>
+  <div class="Container">
+    <div class="Header">
+      <h1> Welcome To Survey Lemur</h1>
+    </div>
+
+    <div class="Menu">
+      <ul id="nav">
+        <li>Home</li>
+        <li><a href="/ ">Home</li>
+        <li><a href="/surveys">My Surveys</li>
+        <li><a href="surveys/new">Create Survey</li>
+        <li><a href="surveys/category">Survey Categories</li>
+        <li><a href="">Log Out</li>
+      </ul>
+    </div>
+
+    <div class="Body">
+
+    </div>
+  </div>
+  <script>  </script>
   <%= yield %>
 </body>
+
+<footer>
+  <div class="Footer">
+    <b>Pew Survey, Copyright - 2014</b>
+  </div>
+</footer>
 </html>
