@@ -26,6 +26,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    daemons (1.1.9)
     diff-lcs (1.2.5)
     eventmachine (1.0.4)
     factory_girl (4.4.0)
@@ -99,3 +100,4 @@ DEPENDENCIES
   shoulda-matchers
   sinatra
   sinatra-contrib
+  thin

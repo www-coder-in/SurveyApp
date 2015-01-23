@@ -4,13 +4,13 @@
 
   <h3>Welcome to Survey Lemur and Sign Up!</h3>
 
-  <% if @error %>
-    <div class="error"><%= @error %></div>
-  <% end %>
+    <% @error_messages.each do |error| %>
+      <div class="error"> <%= error %> </div>
+    <% end %>
 
   <form id="register" method="post" action="/register">
     <label class="label" for="username">Username</label>
-    <input type="username" name="input[username]" placeholder="Zoboomafoo" value="<%= @email %>"><br>
+    <input type="username" name="input[username]" placeholder="Zoboomafoo"><br>
 
     <label class="label" for="password">Password</label>
     <input type="password" name="input[password]" placeholder="6 or more characters">

@@ -4,11 +4,11 @@
 
   <h3>Come on in and sign in!</h3>
 
-  <% if @error %>
-    <div class="error"><%= @error %></div>
-  <% end %>
+    <% @error_messages.each do |error| %>
+      <div class="error"> <%= error %> </div>
+    <% end %>
 
-  <form id="login" method="post" action="/users/<%= @user.id %>/surveys">
+  <form id="login" method="post" action="/login">
     <label class="label" for="name">Name</label>
     <input type="text" name="input[username]" placeholder="Zobamafoo" >
     <br>
