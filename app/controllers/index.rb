@@ -21,7 +21,6 @@ end
 
 # Form for user log-in
 get '/login' do
-
   @error_messages = []
   erb :login
 end
@@ -29,12 +28,8 @@ end
 # Reroutes to user based on if they're logged in
 get '/users/surveys' do
   if current_user
-    # p '-'*50
-    # puts "true for current_user"
     redirect "/users/#{current_user.id}/surveys"
   else
-    # p '-'*50
-    # puts "false for current_user"
     redirect '/login'
   end
 end
@@ -56,8 +51,6 @@ end
 get '/users/:id/surveys/new' do
   @error_messages = []
   @user = current_user
-    p '-'*50
-    puts "in new survey"
   erb :new_survey
 end
 
@@ -72,20 +65,15 @@ end
 # All surveys of a certain user
 get '/users/:id/surveys' do
   if current_user
-    puts "in survey current user"
-    p '-'*50
     @user = current_user
     if Survey.where(author_id: params[:id])
-      puts "didnt find survey"
       @surveys = Survey.where(author_id: params[:id])
     else
       @surveys = []
-      puts "found survey"
     end
     erb :surveys
   else
     @error_messages=[]
-    puts "in login"
     erb :login
   end
 end
@@ -93,12 +81,8 @@ end
 # Reroutes user to new survey form based on if they're logged in
 get '/users/surveys/new' do
   if current_user
-    p '-'*50
-    puts "true for current_user"
     redirect "/users/#{current_user.id}/surveys/new"
   else
-    p '-'*50
-    puts "false for current_user"
     erb :login
   end
 end
@@ -109,19 +93,7 @@ post '/users/:id/surveys' do
   redirect "/users/#{current_user.id}/surveys/#{survey.id}"
 end
 
-# Reroutes user to new survey form based on if they're logged in
-post '/users/:user_id/surveys/:survey_id/questions/' do
-  if current_user
-    p '-'*50
-    puts "true for current_user"
-    redirect "/users/#{current_user.id}/surveys/new"
-  else
-    p '-'*50
-    puts "false for current_user"
-    erb :login
-  end
-end
-
+# Adds new question to a certain survey
 post '/users/:user_id/surveys/:survey_id/questions/new' do
 question = Question.create(params[:input])
 Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: 0)
@@ -129,8 +101,6 @@ Response.create(question_id: question.id, survey_id: params[:survey_id], choice_
   @survey = Survey.find(params[:survey_id])
   @user = current_user
   @questions = @survey.questions
-  puts '-'*50
-  puts @survey
 
   redirect "/users/#{current_user.id}/surveys/#{@survey.id}"
 end
