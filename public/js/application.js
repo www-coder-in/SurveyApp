@@ -1,8 +1,15 @@
-$(function(){
-    $("#submit").click(function(){
-        alert($('input[name=choice]').val());
-    });
- });
+// $(document).ready(function() {
+//   $("#choices").submit(function(e){
+//       e.preventDefault();
+//       data = $(this).serialize()
+//       $.ajax({
+//         url: ,
+//         data: data,
+//         type: 'post'
+//       })
+      // $('input[name=choice]').val();
+  });
+});
 
 
 // $(document).ready(function() {

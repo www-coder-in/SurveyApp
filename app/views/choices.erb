@@ -4,21 +4,18 @@
   <h5> Survey : <%= @survey.title %> </h5>
   <h5> Question : <%= @question.subject %> </h5>
 
-  <form id="ask_choices" method="post" action='/users/<%= current_user.id %>/surveys/<%= @survey.id %>/questions/<%= @question.id %>/choices/new'>
+  <form id="add_choice" method="post" action='/users/<%= current_user.id %>/surveys/<%= @survey.id %>/questions/<%= @question.id %>/choices/new'>
 
    <input type="textbox" class="description" name="input[description]" placeholder="Enter choice here">
    <input class="button-primary" type="submit" value="Add Choice">
  </form>
 
-<form id="ask_choices" method="post" action='/users/<%= current_user.id %>/surveys/<%= @survey.id %>/questions/<%= @question.id %>/choices/new/vote_count'>
+<form id="choices" method="post" action='/users/<%= current_user.id %>/surveys/<%= @survey.id %>/questions/<%= @question.id %>/choices/new/vote_count'>
 
-   <!-- <ul> -->
   <% @choices.each do |choice| %>
-
   <input type="radio" name="choice" value="<%= choice.id %>">   <%= choice.description %><br>
   <% end %>
   <div class="submit"><input class="button-primary" type="submit" value="Submit Reponse"></div>
-  <!-- </ul> -->
 </form>
 
 </div>
