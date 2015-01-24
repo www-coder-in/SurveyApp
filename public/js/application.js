@@ -8,8 +8,8 @@
 //         type: 'post'
 //       })
       // $('input[name=choice]').val();
-  }); // 
-}); //
+//  }); 
+// }); 
 
 
 // $(document).ready(function() {
