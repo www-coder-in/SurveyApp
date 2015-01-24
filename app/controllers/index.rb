@@ -13,6 +13,12 @@ get '/register' do
   end
 end
 
+get '/surveys' do
+  @surveys = Survey.all
+
+  erb :all_surveys
+end
+
 # User registers and sees all their surveys (none)
 post '/register' do
   @user = User.create(params[:input])

@@ -1,0 +1,13 @@
+<div class="container">
+
+<h4> Below are all surveys ever written here!</h4>
+
+<ol>
+  <% @surveys.each do |survey| %>
+    <li> <a href="/users/<%= survey.author_id %>/surveys/<%=survey.id%>">
+      <%= survey.title %> </a>
+    </li>
+  <% end %>
+</ol>
+
+</div>
