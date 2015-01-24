@@ -1,0 +1,21 @@
+<div class="container">
+
+<h4> Your Question Choices:</h4>
+<h5> Survey : <%= @survey.title %> </h5>
+<h5> Question : <%= @question.subject %> </h5>
+
+<form id="ask_choices" method="post" action='/users/<%= current_user.id %>/surveys/<%= @survey.id %>/questions/<%= @question.id %>/choices/new'>
+
+ <input type="textbox" class="description" name="input[description]" placeholder="Enter choice here">
+ <input class="button-primary" type="submit" value="Add Choice">
+</form>
+
+<ul>
+  <% @choices.each do |choice| %>
+    <li>
+      <%= choice.description %>
+    </li>
+  <% end %>
+</ul>
+
+</div>

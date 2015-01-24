@@ -5,14 +5,14 @@
 <h5> <%= @survey.title %> </h5>
 
 <form id="ask_question" method="post" action="/users/<%= @user.id %>/surveys/<%= @survey.id %>/questions/new">
- <input type="textbox" class="question" name="input[subject]" placeholder="Enter Question here">
+ <input type="textbox" class="question" name="input[description]" placeholder="Enter Question here">
  <input class="button-primary" type="submit" value="Add question">
 </form>
 
 <ol>
   <% @questions.each do |question| %>
     <li>
-      <%= question.subject %>
+      <a href="/users/<%=  current_user.id %>/surveys/<%=  @survey.id %>/questions/<%= question.id %>/choices"><%= question.subject %><a>
     </li>
   <% end %>
 </ol>

@@ -95,12 +95,54 @@ end
 
 # Adds new question to a certain survey
 post '/users/:user_id/surveys/:survey_id/questions/new' do
-question = Question.create(params[:input])
-Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: 0)
+  question = Question.create(params[:input])
+  Response.create(question_id: question.id, survey_id: params[:survey_id], choice_id: 0)
 
   @survey = Survey.find(params[:survey_id])
   @user = current_user
   @questions = @survey.questions
 
   redirect "/users/#{current_user.id}/surveys/#{@survey.id}"
+end
+
+#List the question and add choices to it
+get '/users/
+:user_id/surveys/:survey_id/questions/:question_id/choices' do
+  puts '-'*50
+  puts 'in route'
+  @survey = Survey.find(params[:survey_id])
+  @question = Question.find(params[:question_id])
+  if @question.choices
+    @choices = []
+  else
+    @choices = @question.choices
+  end
+erb :choices
+
+end
+
+# List the question and add choices to it
+get '/users/:user_id/surveys/:survey_id/questions/:question_id/choices' do
+  @survey = Survey.find(params[:survey_id])
+  @question = Question.find(params[:question_id])
+  if @question.choices
+        puts '-'*50
+  puts 'in route'
+    @choices = @question.choices
+  else
+    @choices = []
+  end
+erb :choices
+
+end
+
+# Adds choices to a certain question
+post '/users/:user_id/surveys/:survey_id/questions/:question_id/choices/new' do
+
+  choice = Choice.create(params[:input])
+  Response.create(question_id: params[:question_id], survey_id: params[:survey_id], choice_id: choice.id)
+  #   puts '-'*50
+  # puts 'in route'
+
+ redirect "/users/#{params[:user_id]}/surveys/#{params[:survey_id]}/questions/#{params[:question_id]}/choices"
 end
