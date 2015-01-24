@@ -3,45 +3,48 @@
 
 <html>
 <head>
-  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/application.css">
-  <script src="/ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-   <script src="/js/application.js"></script>
-  <title>Welcome Survey Lemur</title>
+  <title>Survey Lemur</title>
 </head>
 
 <body>
-  <div class="Container">
+
+  <div class="Container title">
     <div class="Header">
-      <h1> Welcome To Survey Lemur</h1>
+      <h1>
+        <img id="small_lemur" src="/imgs/Madagascar_lemur.jpg"/>
+        Survey Lemur
+        <img id="small_lemur" src="/imgs/Madagascar_lemur.jpg"/>
+      </h1>
     </div>
 
-      <div class="menu row">
-        <div class="two columns"><a class="button button-primary" href="/">Home</a></div>
-        <div class="two columns"><a class="button button-primary" href="/users/surveys">My Surveys</a></div>
-        <div class="two columns"><a class="button button-primary" href="/users/surveys/new">Create Survey</a></div>
-
-
-
-<!--         <div class="one columns"><a class="button button-primary" href="#"></a></div> -->
-        <div class="two columns"><a class="button" href="/register">Register</a></div>
-        <div class="two columns"><a class="button" href="/login">Log In</a></div>
-        <div class="two columns"><a class="button" href="/logout">Log Out</a></div>
+    <div class="menu row">
+      <div class="single"><a class="button" href="/">Home</a></div>
+      <div class="single"><a class="button button-primary" href="/users/surveys">My Surveys</a></div>
+      <div class="single"><a class="button button-primary" href="/surveys">All Surveys</a></div>
+      <div class="single"><a class="button button-primary" href="/users/surveys/new">Create Survey</a></div>
+      <!--         <div class="one columns"><a class="button button-primary" href="#"></a></div> -->
+      <div class="single"><a class="button" href="/register">Register</a></div>
+      <div class="single"><a class="button" href="/login">Log In</a></div>
+      <div class="single"><a class="button" href="/logout">Log Out</a></div>
 
     </div>
-
     <div class="Body">
-
     </div>
   </div>
-  <script>  </script>
+
   <%= yield %>
+
+  <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script src="/js/application.js"></script>
+
 </body>
 
 <footer>
-  <br><br><br>
+  <br>
   <div class="Footer">
-    <b>Survey Lemur, Copyright - 2014</b>
+    <b>Survey Lemur, Not Copyright - 2014</b>
   </div>
 </footer>
 </html>

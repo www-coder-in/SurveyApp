@@ -418,3 +418,37 @@ there.
 
 /* Larger than Desktop HD */
 @media (min-width: 1200px) {}
+
+/* Extra
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.lemur_div {
+  text-align: center;
+}
+#large_lemur {
+  height: 500px;
+  width: auto;
+}
+
+#small_lemur {
+  /*display: inline-block;*/
+  height: 100px;
+  width: auto;
+}
+
+.menu {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.single {
+  display: inline-block;
+}
+
+h5 {
+    text-align: center;
+    color: blue;
+}
